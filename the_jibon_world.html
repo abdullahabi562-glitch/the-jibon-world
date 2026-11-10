@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101010">
+  <title>The Jibon World — গল্পগুলো বেঁচে থাকুক</title>
+  <meta name="description" content="The Jibon World — জীবনের গল্প, স্মৃতি, অনুভূতি ও না-বলা কথার এক ছোট্ট ঠিকানা।">
+  <style>
+    :root {
+      --bg: #101010; --panel: #191919; --soft: #bdbdbd;
+      --text: #f4f1eb; --line: #343434; --accent: #d8c7a3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Georgia, "Noto Serif Bengali", "Nirmala UI", serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1100px, 92%); margin: auto; }
+    header {
+      min-height: 88vh; display: grid; place-items: center; text-align: center;
+      padding: 70px 0; position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 50% 30%, #29251f 0%, #101010 58%);
+    }
+    header::after {
+      content: ""; position: absolute; width: 320px; height: 320px;
+      border: 1px solid #ffffff12; border-radius: 50%; top: 12%; left: 50%;
+      transform: translateX(-50%); box-shadow: 0 0 0 35px #ffffff08, 0 0 0 70px #ffffff05;
+      pointer-events: none;
+    }
+    .hero { position: relative; z-index: 1; }
+    .eyebrow { color: var(--accent); letter-spacing: 4px; text-transform: uppercase; font: 12px Arial, sans-serif; }
+    h1 { font-size: clamp(42px, 8vw, 82px); line-height: 1.1; margin: 18px 0; letter-spacing: 1px; }
+    .hero p { color: var(--soft); max-width: 650px; margin: 0 auto 30px; font-size: 18px; }
+    .btn {
+      display: inline-block; text-decoration: none; padding: 11px 22px; margin: 6px;
+      border: 1px solid var(--accent); border-radius: 3px; color: var(--accent);
+      transition: .2s; font-family: Arial, sans-serif; font-size: 14px;
+    }
+    .btn.primary { background: var(--accent); color: #171512; }
+    .btn:hover { transform: translateY(-2px); opacity: .85; }
+    nav { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    nav .wrap { display: flex; justify-content: center; flex-wrap: wrap; gap: 28px; padding: 13px; }
+    nav a { text-decoration: none; color: var(--soft); font: 13px Arial, sans-serif; }
+    section { padding: 75px 0; }
+    .section-title { text-align: center; margin-bottom: 35px; }
+    .section-title h2 { font-size: clamp(27px, 5vw, 40px); margin: 0 0 8px; }
+    .section-title p { color: var(--soft); margin: 0; }
+    .about {
+      max-width: 780px; margin: auto; text-align: center; color: #d1cdc5;
+      font-size: 18px;
+    }
+    .quote {
+      border-left: 2px solid var(--accent); background: var(--panel);
+      padding: 25px 28px; margin: 32px auto 0; max-width: 720px;
+      color: var(--accent); font-size: 20px; font-style: italic;
+    }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: var(--panel); border: 1px solid var(--line); padding: 25px; min-height: 190px; }
+    .card .symbol { color: var(--accent); font-size: 25px; }
+    .card h3 { margin: 12px 0 6px; font-size: 20px; }
+    .card p { margin: 0; color: var(--soft); font-size: 15px; }
+    .form-shell { max-width: 760px; margin: auto; background: var(--panel); border: 1px solid var(--line); padding: clamp(20px, 5vw, 42px); }
+    label { display: block; margin: 16px 0 7px; color: #e4dfd5; font-size: 15px; }
+    input, select, textarea {
+      width: 100%; padding: 13px 14px; background: #101010; color: var(--text);
+      border: 1px solid #444; border-radius: 2px; font: inherit; outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+    textarea { min-height: 170px; resize: vertical; }
+    .hint { color: #aaa; font-size: 13px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; color: var(--soft); font-size: 13px; margin: 17px 0; }
+    .check input { width: auto; margin-top: 6px; }
+    button { cursor: pointer; border: 0; }
+    .notice { background: #252116; border: 1px solid #65583b; color: #e8d9b8; padding: 12px 15px; font-size: 13px; margin-top: 18px; }
+    .social { text-align: center; background: #151515; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    footer { padding: 28px 0; text-align: center; color: #888; font: 12px Arial, sans-serif; }
+    @media (max-width: 700px) { .cards { grid-template-columns: 1fr; } header { min-height: 78vh; } nav .wrap { gap: 16px; } }
+  </style>
+</head>
+<body>
+  <!-- SETUP: Replace the Facebook URL below with your actual page link. -->
+  <header id="home">
+    <div class="hero wrap">
+      <div class="eyebrow">A little world of human stories</div>
+      <h1>The Jibon World</h1>
+      <p>প্রতিটি মানুষের জীবনেই কিছু গল্প থাকে—কিছু বলা হয়, কিছু থেকে যায় নীরবতার আড়ালে।<br>এখানে আপনার গল্পটিও জায়গা পেতে পারে।</p>
+      <a class="btn primary" href="#share">নিজের গল্প শেয়ার করুন</a>
+      <a class="btn" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook Page</a>
+    </div>
+  </header>
+
+  <nav>
+    <div class="wrap">
+      <a href="#about">আমাদের সম্পর্কে</a>
+      <a href="#stories">কী শেয়ার করবেন</a>
+      <a href="#share">গল্প পাঠান</a>
+      <a href="#facebook">Facebook</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>গল্পেরও একটা ঠিকানা থাকা উচিত</h2>
+          <p>Welcome to The Jibon World</p>
+        </div>
+        <div class="about">
+          The Jibon World এমন একটি ছোট্ট জায়গা, যেখানে জীবনের নানা অধ্যায়, স্মৃতি,
+          আনন্দ, কষ্ট, বন্ধুত্ব, অভিজ্ঞতা কিংবা কল্পনার গল্প ভাগ করে নেওয়া যায়।
+          আপনার পরিচয় গোপন রেখেও গল্প পাঠাতে পারেন। অন্যের গল্পকে সম্মান করুন,
+          কারণ প্রতিটি গল্পের পেছনে একজন মানুষ থাকে।
+        </div>
+        <div class="quote">“জীবন থেমে থাকে না—কিন্তু কিছু মুহূর্ত গল্প হয়ে চিরকাল থেকে যায়।”</div>
+      </div>
+    </section>
+
+    <section id="stories">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>কী ধরনের গল্প পাঠাতে পারেন?</h2>
+          <p>Your story matters.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="symbol">✦</div><h3>জীবনের গল্প</h3><p>বাস্তব অভিজ্ঞতা, জীবনের মোড় ঘোরানো ঘটনা, পাওয়া-না পাওয়ার কথা।</p></article>
+          <article class="card"><div class="symbol">☾</div><h3>স্মৃতি ও অনুভূতি</h3><p>শৈশব, বন্ধুত্ব, পরিবার, একাকিত্ব কিংবা মনে জমে থাকা কোনো স্মৃতি।</p></article>
+          <article class="card"><div class="symbol">✧</div><h3>কল্পনার জগৎ</h3><p>ছোটগল্প, ভাবনা, কল্পকাহিনি অথবা আপনার লেখা কোনো সৃজনশীল গল্প।</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="share">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>আপনার গল্পটি লিখুন</h2>
+          <p>একটি গল্প—হয়তো কারও মনে সাহস জোগাবে।</p>
+        </div>
+        <div class="form-shell">
+          <!-- SETUP: Add a real form endpoint to receive submissions.
+               Example: Formspree provides an endpoint such as https://formspree.io/f/xxxxxxx
+               Replace the action URL and keep method="POST". -->
+          <form id="storyForm" action="" method="POST">
+            <label for="storyTitle">গল্পের শিরোনাম</label>
+            <input id="storyTitle" name="title" type="text" placeholder="আপনার গল্পের একটি নাম দিন" required>
+
+            <label for="author">আপনার নাম (ঐচ্ছিক)</label>
+            <input id="author" name="author" type="text" placeholder="নাম প্রকাশ করতে না চাইলে ফাঁকা রাখুন">
+
+            <label for="category">গল্পের ধরন</label>
+            <select id="category" name="category" required>
+              <option value="">একটি বিভাগ বেছে নিন</option>
+              <option>জীবনের গল্প</option>
+              <option>স্মৃতি ও অনুভূতি</option>
+              <option>বন্ধুত্ব ও পরিবার</option>
+              <option>কল্পকাহিনি / ছোটগল্প</option>
+              <option>অন্যান্য</option>
+            </select>
+
+            <label for="story">আপনার গল্প</label>
+            <textarea id="story" name="story" placeholder="মনের কথাগুলো লিখুন..." required></textarea>
+
+            <label class="check">
+              <input type="checkbox" name="permission" value="yes" required>
+              <span>আমি সম্মতি দিচ্ছি যে The Jibon World আমার গল্পটি পর্যালোচনা করে প্রকাশ করতে পারবে। ব্যক্তিগত তথ্য প্রকাশ করা হবে না।</span>
+            </label>
+
+            <button class="btn primary" type="submit">গল্প জমা দিন</button>
+            <p class="hint">প্রকাশের আগে গল্পটি পর্যালোচনা করা হবে। কারও ব্যক্তিগত তথ্য বা অনুমতি ছাড়া অন্যের পরিচয় প্রকাশ করবেন না।</p>
+            <div class="notice">সাইটটি চালু করার আগে form-এর action-এ আপনার Formspree (বা অন্য form service)-এর endpoint বসাতে হবে। এখনো কোনো গল্প কোথাও পাঠানো হচ্ছে না।</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="social" id="facebook">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>চলুন, গল্পের জগতে যুক্ত হই</h2>
+          <p>Follow our Facebook page for stories, updates and new posts.</p>
+          <a class="btn primary" href="https://www.facebook.com/" target="_blank" rel="noopener">Visit The Jibon World on Facebook</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> The Jibon World. All stories have a voice.</div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("storyForm").addEventListener("submit", function (event) {
+      if (!this.getAttribute("action")) {
+        event.preventDefault();
+        alert("গল্প জমা দেওয়ার ব্যবস্থা এখনো সংযুক্ত করা হয়নি। ওয়েবসাইট চালুর আগে Formspree endpoint যোগ করতে হবে।");
+      }
+    });
+  </script>
+</body>
+</html>
